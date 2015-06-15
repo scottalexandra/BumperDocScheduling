@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'login', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   resources :user
+  resources :job
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
