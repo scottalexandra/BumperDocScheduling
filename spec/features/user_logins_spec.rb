@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature "UserLogins", type: :feature do
-  
+  let(:user) { create(:user) }
+
   it "can login from home page" do
     visit root_path
-    click_link_or_button "Log In"
-    expect(current_path).to eq(login_path)
-    expect(page).to have_content("An app by DevBoutique")
+    expect(page).to have_content("BumperDoc Denver Scheduling Portal")
   end
 
   it "can login from the home page" do
     visit root_path
-    fill_in "session[username]", with: user.username
-    fill_in "session[password]", with: user.password
+    fill_in "sessions[email]", with: user.email
+    fill_in "sessions[password]", with: user.password
     click_link_or_button "Log In"
-    expect(current_path).to eq(schedule_index_path)
+    expect(current_path).to eq(job_index_path)
   end
 end
