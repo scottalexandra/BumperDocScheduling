@@ -14,5 +14,6 @@ RSpec.feature "UserLogins", type: :feature do
     fill_in "sessions[password]", with: user.password
     click_link_or_button "Log In"
     expect(current_path).to eq(job_index_path)
+    expect(page).to have_content("Welcome #{user.username}")
   end
 end
